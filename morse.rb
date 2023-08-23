@@ -1,5 +1,5 @@
 def decode_char(code)
-morse_to_alphabet = {
+  morse_to_alphabet = {
     '.-' => 'A',
     '-...' => 'B',
     '-.-.' => 'C',
@@ -29,3 +29,15 @@ morse_to_alphabet = {
   }
   morse_to_alphabet[code]
 end
+
+def decode_word(word)
+  word = word.split.map { |char| decode_char(char) }
+  word.join
+end
+
+def decode(message)
+  message = message.split('   ').map { |word| decode_word(word) }
+  message.join(' ')
+end
+
+puts(decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'))
